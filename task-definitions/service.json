@@ -1,0 +1,48 @@
+[
+  {
+    "name": "envoy-proxy",
+    "image": "envoyproxy/envoy-dev",
+    "cpu": 512,
+    "memory": 1024,
+    "essential": true,
+    "portMappings": [
+      {
+          "hostPort": 80,
+          "protocol": "tcp",
+          "containerPort": 80
+        },
+        {
+          "hostPort": 10000,
+          "protocol": "tcp",
+          "containerPort": 10000
+        },
+        {
+          "hostPort": 443,
+          "protocol": "tcp",
+          "containerPort": 443
+        },
+        {
+          "hostPort": 81,
+          "protocol": "tcp",
+          "containerPort": 81
+        },
+        {
+          "hostPort": 8443,
+          "protocol": "tcp",
+          "containerPort": 8443
+        },
+        {
+          "hostPort": 8001,
+          "protocol": "tcp",
+          "containerPort": 8001
+        }
+    ],
+    "ulimits": [
+        {
+          "name": "nofile",
+          "softLimit": 60000,
+          "hardLimit": 60000
+        }
+    ]
+  }
+]
