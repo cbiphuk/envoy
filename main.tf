@@ -100,7 +100,7 @@ resource "aws_autoscaling_group" "ecs_autoscaling_group" {
   min_size         = "${var.min_instance_size}"
   desired_capacity = "${var.desired_capacity}"
 
-  #TODO: Fix this
+  #TODO: Fix hardcoded subnet
   vpc_zone_identifier  = ["subnet-3ff1545b"]
   launch_configuration = "${module.launchconfiguration.ecs_launch_config}"
   health_check_type    = "ELB"
@@ -119,5 +119,14 @@ resource "aws_ecs_cluster" "test-ecs-cluster" {
 }
 
 module "envoytask" "envoy_proxy" {
-  source                        = "./modules/envoytask"
+  source = "./modules/envoytask"
 }
+
+module "envoynlb" "ecs_envoy_nlb" {
+  source   = "./modules/envoynlb"
+  nlb_name = "${var.nlb_name}"
+  subnets  = ["${var.subnets}"]
+}
+
+#TODO: write module description for envoyservice
+

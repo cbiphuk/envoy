@@ -51,10 +51,12 @@ variable "max_instance_size" {
   default     = "1"
   description = "max value of hosts in autoscaling group"
 }
+
 variable "min_instance_size" {
   default     = "1"
   description = "max value of hosts in autoscaling group"
 }
+
 variable "desired_capacity" {
   default     = "1"
   description = "max value of hosts in autoscaling group"
@@ -63,4 +65,14 @@ variable "desired_capacity" {
 variable "ecs_cluster" {
   default     = "envoy_ecs_cluster"
   description = "ecs envoy cluster name"
+}
+
+variable "nlb_name" {
+  default     = "Envoy-NLB"
+  description = "NLB for balancing envoy proxy instances"
+}
+
+variable "subnets" {
+  default = ["subnet-3ff1545b"]
+  description = "NLB subnets"
 }
